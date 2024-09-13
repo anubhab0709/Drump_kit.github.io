@@ -4,13 +4,13 @@ var number = document.querySelectorAll(".drum").length;
 for(var i = 0; i < number; i++) 
 {
 
-
 document.querySelectorAll(".drum")[i].addEventListener("click", 
 
 function() 
 { 
 
     var buttonInnerHTML = this.innerHTML;
+    buttonAnimation(buttonInnerHTML);
 
     switch (buttonInnerHTML) 
     {
@@ -54,15 +54,16 @@ function()
     }
     
 
-
-
-
 } );
 }
+
+
+//keypress
 
 document.addEventListener("keydown", function (event)
 {
     var buttonhaspressed= event.key;
+    buttonAnimation(event.key);
 
 
     switch (buttonhaspressed) 
@@ -107,6 +108,18 @@ document.addEventListener("keydown", function (event)
     }
 });
 
+
+//button animation
+
+function buttonAnimation(currentkey)
+{
+
+    var activebutton = document.querySelector("." +currentkey);
+    activebutton.classList.add("pressed");
+    setTimeout(function()
+    {activebutton.classList.remove("pressed");},100);
+
+}
 
 
 
